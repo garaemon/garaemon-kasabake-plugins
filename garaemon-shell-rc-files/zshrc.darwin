@@ -1,0 +1,58 @@
+# -*- mode: shell-script -*-
+alias emacs='/Applications/MacPorts/Emacs.app/Contents/MacOS/Emacs'
+alias e='/Applications/MacPorts/Emacs.app/Contents/MacOS/bin/emacsclient -n'
+alias ls='ls -G'
+
+#alias emacs24='/Applications/Emacs23.app/Contents/MacOS/Emacs'
+
+# macports
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+export MANPATH=/opt/local/man:$MANPATH
+# parallel building in macports
+
+
+# x
+#export PATH=$PATH:/usr/X11R6/bin
+#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/X11R6/lib
+
+# android
+#export PATH=$PATH:$HOME/prog/android-sdk-mac_x86-1.1_r1/tools
+
+# CUDA
+export PATH=$PATH:/usr/local/cuda/bin
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/usr/local/cuda/lib
+
+export PATH=/usr/local/bin:$PATH
+
+export GOROOT=$HOME/prog/go
+export GOOS=darwin
+export GOARCH=386
+export GOBIN=$HOME/prog/go/bin
+export PATH=$PATH:$GOBIN
+
+export PATH=$PATH:/Developer/SDKs/flex_sdk_3.4/bin
+
+export PATH=$PATH:$HOME/prog/openrave/localinstall/bin
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$HOME/prog/openrave/localinstall/lib
+
+export PATH=$PATH:$HOME/opt/local/bin
+export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$HOME/opt/local/lib
+#export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/usr/X11/lib
+
+#ROS
+export CPATH=/opt/local/include
+export LIBRARY_PATH=/opt/local/lib
+export PATH=/opt/local/bin:$PATH
+
+# for wx widgets
+export VERSIONER_PYTHON_PREFER_32_BIT=yes
+
+alias ipython="ipython-2.6"
+
+run-with-growl()
+{
+    $@
+    local result=$?
+    growlnotify -t "process has finished" -m "$@"
+    return $result
+}
