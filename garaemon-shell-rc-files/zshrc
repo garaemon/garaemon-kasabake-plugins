@@ -184,6 +184,8 @@ fi
 
 export PATH=$PATH:$HOME/gprog/kasabake
 
-export LANG=utf-8
+if [ -e $HOME/.zshrc.kasabake.util ]; then
+    source $HOME/.zshrc.kasabake.util
+fi
 
-source $HOME/.zshrc.kasabake.util
+export LANG=ja_JP.UTF8

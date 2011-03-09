@@ -19,7 +19,7 @@ class GaraemonShellRCFiles(FileInstaller):
                                PLUGIN_DIR)
         return
     def callback(self, options):
-        files = ["zshrc", "zshrc.darwin", "zshrc.linux", 
+        files = ["zshrc", "zshrc.darwin", "zshrc.linux",
                  "bashrc", "bashrc.linux"]
         copy_dict = dict([[os.path.join(self.getPluginPath(), f),
                            os.path.join(os.path.expanduser("~"), "." + f)]
