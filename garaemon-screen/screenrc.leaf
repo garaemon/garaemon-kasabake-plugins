@@ -48,9 +48,8 @@ shell $SHELL                    # how to run new shell
 logfile "$HOME/.screen/screen-%Y%m%d-%n.log"
 deflog on
 #shelltitle '$ |zsh'
-# caption always "%{= Rk} %?%F%{b kr}%? %?%h%:%t (screen #%n)%? %{-}"
-caption always "%?%F%{= wk}%:%{= ww}%?%-w%{=u Wk}%n %t%{-}%+w"
-hardstatus alwayslastline "%{= Gk} %-Lw%40L>%{b kg} %n %t %{-}%+Lw%-040=%{b km} %l %{.b} %Y/%m/%d %C:%s %A "
+caption always "%{= Gk} %-w%{=b kg}%n %t%{-}%+w %="
+hardstatus alwayslastline "%-040=%{b km} %l %{.b} %Y/%m/%d %C:%s %A "
 sorendition "= Rk"
 # escape ^T^T
 

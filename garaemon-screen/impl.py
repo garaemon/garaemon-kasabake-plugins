@@ -1,5 +1,8 @@
 import kasabake
 import os
+import time
+import datetime
+import sys
 
 import twitter
 
@@ -21,7 +24,13 @@ class GaraemonScreen(FileInstaller):
         parser.add_command("twitter",
                            narg = 0,
                            callback = self.twitter,
-                           help = "print timeline of your twitter.")
+                           help = "print timeline of your twitter. \
+this is a helper command for screen.")
+        parser.add_command("date",
+                           narg = 0,
+                           callback = self.date,
+                           help = "print date. this is a helper commmand \
+for screen.")
         FileInstaller.__init__(self, manager,
                                PLUGIN_COMMAND,
                                parser,
@@ -39,4 +48,9 @@ class GaraemonScreen(FileInstaller):
     def twitter(self, options):
         twitter.main()
         return True
-    
+    def date(self, options):
+        while True:
+            sys.stdout.write(str(datetime.datetime.today()) + "\n")
+            sys.stdout.flush()
+            time.sleep(1)
+        return True
