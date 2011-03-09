@@ -1,0 +1,88 @@
+# -*- mode: shell-script -*-
+alias cp='cp -v'
+alias mv='mv -v'
+alias grep='grep --color=auto'
+alias sbcl="kasabake clbuild lisp"
+
+#ssh-agent
+# you always need to cal init_ssh_agent when you want to activate ssh-agent
+init_ssh_agent () {
+    eval `ssh-agent`
+    mkdir -p $HOME/.tmp/ssh-agent/
+    ssh-add
+    if [ $? = "0" ]; then
+        local agent="$HOME/.tmp/ssh-agent/`hostname`_local"
+        ln -snf "$SSH_AUTH_SOCK" $agent && export SSH_AUTH_SOCK=$agent
+    else
+        echo "init failed"
+        return 1
+    fi
+}
+
+update_ssh_agent () {
+    update_ssh_agent_ "$HOME/.tmp/ssh-agent/`hostname`_local" \
+        || update_ssh_agent_ "$HOME/.tmp/ssh-agent/`hostname`"
+}
+
+update_ssh_agent_ () {
+    local agent="$1"
+    if [ -z "$agent" ]; then
+        return 1
+    fi
+
+    if [ -S "$agent" ]; then
+        if [ ! "$SSH_AUTH_SOCK" -ef "$agent" ]; then
+            export SSH_AUTH_SOCK_OLD=$SSH_AUTH_SOCK
+        fi
+
+        export SSH_AUTH_SOCK=$agent
+        return 0
+    elif [ ! -S "$SSH_AUTH_SOCK" ]; then
+        echo "no ssh-agent"
+        if [ -L "$agent" ]; then
+            rm -rf $agent
+        fi
+        if [ -n "$SSH_AUTH_SOCK_OLD" ]; then
+            if [ -S "$SSH_AUTH_SOCK_OLD" ]; then
+                SSH_AUTH_SOCK=$SSH_AUTH_SOCK_OLD
+            fi
+            unset SSH_AUTH_SOCK_OLD
+            update_ssh_agent
+        fi
+    elif [ ! -L "$SSH_AUTH_SOCK" ]; then
+        ssh-add -l >/dev/null \
+            && ln -snf "$SSH_AUTH_SOCK" $agent && export SSH_AUTH_SOCK=$agent
+    fi
+}
+
+# X Window Setup
+function get_xserver ()
+{
+    case $TERM in
+        xterm )
+            XSERVER=$(who am i | awk '{print $NF}' | tr -d ')''(' ) 
+            XSERVER=${XSERVER%%:*}
+            ;;
+        aterm | rxvt)
+        # find some code that works here.....
+            ;;
+    esac  
+}
+
+if [ -z ${DISPLAY:=""} ]; then
+    get_xserver
+    if [[ -z ${XSERVER}  || ${XSERVER} == $(hostname) || ${XSERVER} == "unix" ]]; then 
+        DISPLAY=":0.0"          # Display on local host
+    else                
+        DISPLAY=${XSERVER}:0.0  # Display on remote host
+    fi
+fi
+
+export DISPLAY
+
+# PATH setup
+export PATH=$PATH:$HOME/gprog/emacs-settings
+export PATH=$PATH:$HOME/gprog/clbuild
+export PATH=$PATH:$HOME/gprog/kasabake
+
+export LANG=ja_JP.UTF-8
