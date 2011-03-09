@@ -1,0 +1,37 @@
+# -*- mode: shell-script -*-
+# Keys
+# \233 is "Meta-Ctrl-[", or "Meta-Esc".
+escape \233\233
+
+# no zombie ... upper screen termination should propagate to this one.
+zombie
+
+# Protection from attacks
+multiuser off
+idle off
+
+# No visible bell because a stem screen should not intercept a bell.
+vbell off
+
+# No autodetach because a detached stem screen is useless.
+autodetach off
+
+# No startup message because a stem screen should not be invoked manually
+startup_message off
+
+# No login, otherwise /var/run/utemp will be squashed.
+deflogin off
+
+# Nuke and pave.
+autonuke on
+
+# Dsiable scroll buffer, should be implemented in upper screens.
+defscrollback 0
+
+# mouse scrolling
+termcapinfo xterm* ti@:te@
+term screen-256color
+
+# chdir is useful for invoking scripts there.
+chdir $HOME
+

@@ -26,4 +26,3 @@ class GaraemonShellRCFiles(FileInstaller):
                           for f in files])
         self.installFiles(copy_dict)
         return True
-    

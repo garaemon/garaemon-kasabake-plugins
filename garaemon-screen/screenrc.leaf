@@ -1,0 +1,62 @@
+#-*- mode: shell-script -*-
+
+# shoultup!
+vbell off
+bell_msg "Bell in window %^G"
+startup_message off
+
+# keybindings
+escape ^T^T
+# copy & paste like emacs
+bind y paste [.]                # yank
+markkeys "h=^b:l=^f:0=^a:j=^n:k=^p:$=^e:^d=^v"
+bindkey -m ^k stuff ' $ '       # Ctrl-k
+bindkey -m ^g stuff !           # Ctrl-g
+bindkey -m ^[v stuff ^B
+bindkey -m ^[< stuff g
+bindkey -m ^[> stuff G
+# bindkey -m ^' ' stuff ' '
+# bindkey ^x command -c emacs
+# bind -c emacs 1 only
+# bind -c emacs 2 split
+# bind -c emacs 3 split -v
+
+# window splitting like meacs
+bind 2 split
+bind 3 split -v
+bind o focus
+bind l windowlist
+bind 1 only
+bind 0 remove
+
+# key binds of window resize mode
+bind r eval 'echo "Resize window"' 'command -c resize'
+bind -c resize ^] command
+bind -c resize j eval 'resize +1' 'command -c resize'
+bind -c resize k eval 'resize -2' 'command -c resize'
+
+defbce on
+attrcolor b ".I"
+#term xterm-256color
+#termcapinfo xterm-256color 'is=^[r^[m^[2J^[H^[?7h^[?1;4;6l'
+defscrollback 1000
+altscreen on
+
+autodetach off
+shell $SHELL                    # how to run new shell
+
+logfile "$HOME/.screen/screen-%Y%m%d-%n.log"
+deflog on
+#shelltitle '$ |zsh'
+# caption always "%{= Rk} %?%F%{b kr}%? %?%h%:%t (screen #%n)%? %{-}"
+caption always "%?%F%{= wk}%:%{= ww}%?%-w%{=u Wk}%n %t%{-}%+w"
+hardstatus alwayslastline "%{= Gk} %-Lw%40L>%{b kg} %n %t %{-}%+Lw%-040=%{b km} %l %{.b} %Y/%m/%d %C:%s %A "
+sorendition "= Rk"
+# escape ^T^T
+
+defkanji utf-8
+defencoding utf-8
+encoding utf-8 utf-8
+
+
+chdir
