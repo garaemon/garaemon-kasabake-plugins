@@ -3,7 +3,7 @@ source .screenrc.defaults
 autodetach on
 
 caption always "%{= dd}%`"
-#backtick 0 0 0 /Users/garaemon/gprog/garaemon-install/dot-files/screen/twitter.py
-backtick 0 0 0 /Users/garaemon/gprog/garaemon-install/dot-files/screen/date.py
+backtick 0 0 0 kasabake garaemon-screen twitter
+#backtick 0 0 0 /Users/garaemon/gprog/garaemon-install/dot-files/screen/date.py
 
 screen screen -qUmc .screenrc.leaf

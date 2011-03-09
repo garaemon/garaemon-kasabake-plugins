@@ -1,6 +1,8 @@
 import kasabake
 import os
 
+import twitter
+
 from file_installer import FileInstaller
 from kasabake import KasabakeCommandPlugin, CommandParser
 
@@ -16,6 +18,10 @@ class GaraemonScreen(FileInstaller):
                            narg = 0,
                            callback = self.install,
                            help = "install screen setting files")
+        parser.add_command("twitter",
+                           narg = 0,
+                           callback = self.twitter,
+                           help = "print timeline of your twitter.")
         FileInstaller.__init__(self, manager,
                                PLUGIN_COMMAND,
                                parser,
@@ -27,4 +33,10 @@ class GaraemonScreen(FileInstaller):
                            os.path.join(os.path.expanduser("~"), "." + f)]
                           for f in files])
         self.installFiles(copy_dict)
-        return
+        p = self.getManager().getPlugin("easy_install")
+        p.installPackages(options, "tweepy")
+        return True
+    def twitter(self, options):
+        twitter.main()
+        return True
+    
