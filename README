@@ -1,1 +1,13 @@
 this is a plugin for garaemon specific setting
+
+---
+$ git clone git://github.com/garaemon/kasabake.git
+$ export PATH=$PATH:$PWD/kasabake
+$ mkdir -p ~/gprog
+$ kasabake global-config set project-root '~/gprog'
+$ kasabake install-plugin git git://github.com/garaemon/garaemon-kasabake-plugins garaemon-kasabake-plugins
+
+# if you want to use screen
+$ rm ~/.screenrc
+$ kasaabke garaemon-screen install
+$ screen

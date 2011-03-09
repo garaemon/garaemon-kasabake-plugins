@@ -44,6 +44,7 @@ for screen.")
         self.installFiles(copy_dict)
         p = self.getManager().getPlugin("easy_install")
         p.installPackages(options, "tweepy")
+        twitter.register()
         return True
     def twitter(self, options):
         twitter.main()

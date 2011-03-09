@@ -25,6 +25,25 @@ def run_home_timeline(api):
             sys.stdout.flush()
             time.sleep(sleep_time)
 
+def register():
+    consumer_key = "TdrgpiHH3rEvijxEiSgFg"
+    consumer_secret = "5RLZj4HNCoLXdyip9kJbiZvZrVgLGs10mrZXfTvHE"
+    auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+    pin_file = os.path.join(FILE_DIR, "twitter_pin")
+    if os.path.exists(pin_file):
+        print "You have already have twitter pin file"
+    else:
+        webbrowser.open(auth.get_authorization_url())
+        pin = raw_input('Verification pin number from twitter.com: ').strip()
+        token = auth.get_access_token(verifier=pin)
+        f = open(pin_file, "w")
+        f.write(token.key + "\n")
+        f.write(token.secret)
+        f.close()
+        access_key = token.key
+        access_secret = token.secret
+    return 
+            
 def main():
     """
     Consumer key: TdrgpiHH3rEvijxEiSgFg
