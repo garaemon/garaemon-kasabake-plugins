@@ -9,5 +9,5 @@ $ kasabake install-plugin git git://github.com/garaemon/garaemon-kasabake-plugin
 
 # if you want to use screen
 $ rm ~/.screenrc
-$ kasaabke garaemon-screen install
+$ kasabake garaemon-screen install
 $ screen
