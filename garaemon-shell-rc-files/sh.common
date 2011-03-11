@@ -84,5 +84,6 @@ export DISPLAY
 export PATH=$PATH:$HOME/gprog/emacs-settings
 export PATH=$PATH:$HOME/gprog/clbuild
 export PATH=$PATH:$HOME/gprog/kasabake
+export PATH=$PATH:$HOME/gprog/platex-create-pkg
 
 export LANG=ja_JP.UTF-8
