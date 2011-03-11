@@ -32,6 +32,11 @@ defscrollback 0
 termcapinfo xterm* ti@:te@
 term screen-256color
 
+defkanji utf-8
+defencoding utf-8
+encoding utf-8 utf-8
+
 # chdir is useful for invoking scripts there.
 chdir $HOME
 
+# eval 'export LANG=ja_JP.UTF-8'
