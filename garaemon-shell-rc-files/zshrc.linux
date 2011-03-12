@@ -19,3 +19,4 @@ fi
 
 alias rm='trash-put -v'
 alias ls="ls --color=auto"
+alias open="gnome-open"
