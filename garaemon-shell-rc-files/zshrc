@@ -97,3 +97,5 @@ if [ -e $HOME/.zshrc.mine ]; then
     echo loading customizing setup file ...
     source $HOME/.zshrc.mine
 fi
+
+
