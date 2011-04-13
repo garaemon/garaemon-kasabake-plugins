@@ -98,4 +98,5 @@ if [ -e $HOME/.zshrc.mine ]; then
     source $HOME/.zshrc.mine
 fi
 
-
+# rvm
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
