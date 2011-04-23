@@ -1,3 +1,4 @@
+# -*- mode: shell-script -*-
 alias emacs='/Applications/MacPorts/Emacs.app/Contents/MacOS/Emacs'
 alias e='/Applications/MacPorts/Emacs.app/Contents/MacOS/bin/emacsclient -n'
 alias ls='ls -G'
@@ -52,8 +53,8 @@ run-with-growl()
     return $result
 }
 
-
-
 # rvm
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && rvm use 1.9.2
+if [ -s "$HOME/.rvm/scripts/rvm" ]; then
+    source "$HOME/.rvm/scripts/rvm"
+    rvm use 1.9.2
+fi

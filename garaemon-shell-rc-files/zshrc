@@ -53,8 +53,6 @@ if [ "${TERM}" = screen-bce -o "${TERM}" = screen ]; then
     }
 fi
 
-source $HOME/.shrc.common
-
 if [ -e $HOME/.zshrc.jsk ]; then
     echo loading jsk setup file ...
     source $HOME/.zshrc.jsk
@@ -65,6 +63,9 @@ if [ -e $HOME/.zshrc.cturtle.ros ]; then
     echo loading ros setup file ...
     source $HOME/.zshrc.cturtle.ros
 fi
+
+
+source $HOME/.shrc.common
 
 if [ -e $HOME/.zshrc.kasabake.util ]; then
     source $HOME/.zshrc.kasabake.util

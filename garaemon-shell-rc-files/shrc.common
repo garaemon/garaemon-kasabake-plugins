@@ -106,3 +106,9 @@ elif [ "$OS" = "Darwin" ] ; then
         source $HOME/.shrc.darwin
     fi
 fi
+
+# customizing shrc?
+if [ -e $HOME/.shrc.mine ]; then
+    echo loading customizing setup file ...
+    source $HOME/.shrc.mine
+fi
