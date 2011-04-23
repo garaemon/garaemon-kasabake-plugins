@@ -1,14 +1,4 @@
 # -*- mode: shell-script -*-
-alias emacs='XMODIFIERS=@im=none emacs'
-
-export PATH=$PATH:/var/lib/gems/1.8/bin
-
-# for euslisp
-if [ `uname -m` = i686 ]; then
-    export ARCHDIR=Linux
-else
-    export ARCHDIR=Linux64
-fi
 
 # for euslisp and ros
 if [ "`which rospack`" != "" ]; then
@@ -17,6 +7,3 @@ if [ "`which rospack`" != "" ]; then
     fi
 fi
 
-alias rm='trash-put -v'
-alias ls="ls --color=auto"
-alias open="gnome-open"
