@@ -52,3 +52,7 @@ run-with-growl()
     growlnotify -t "process has finished" -m "$@"
     return $result
 }
+
+# rvm
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && rvm use 1.9.2
