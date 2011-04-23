@@ -145,6 +145,7 @@ export PATH=$PATH:$HOME/gprog/emacs-settings
 # customize bashrc
 # if you have jsk bashrc, source it
 if [ -e $HOME/.bashrc.jsk ]; then
+    quiet_echo loading jsk setup file ...
     source $HOME/.bashrc.jsk
 fi
 
