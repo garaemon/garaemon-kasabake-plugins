@@ -60,6 +60,17 @@ if [ -e $HOME/.zshrc.jsk ]; then
     source $HOME/.zshrc.jsk
 fi
 
+# ros zshrc
+if [ -e $HOME/.zshrc.cturtle.ros ]; then
+    echo loading ros setup file ...
+    source $HOME/.zshrc.cturtle.ros
+fi
+
+if [ -e $HOME/.zshrc.kasabake.util ]; then
+    source $HOME/.zshrc.kasabake.util
+fi
+
+
 OS=`uname`
 if [ "$OS" = "CYGWIN_NT-5.1" -o "$OS" = "CYGWIN_NT-6.0" ] ; then
     if [ -e $HOME/.zshrc.cygwin ]; then
@@ -80,16 +91,6 @@ elif [ "$OS" = "Darwin" ] ; then
         echo loading darwin setup file ...
         source $HOME/.zshrc.darwin
     fi
-fi
-
-# ros zshrc
-if [ -e $HOME/.zshrc.cturtle.ros ]; then
-    echo loading ros setup file ...
-    source $HOME/.zshrc.cturtle.ros
-fi
-
-if [ -e $HOME/.zshrc.kasabake.util ]; then
-    source $HOME/.zshrc.kasabake.util
 fi
 
 # customizing zshrc?

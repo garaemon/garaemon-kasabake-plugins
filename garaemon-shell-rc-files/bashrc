@@ -149,6 +149,14 @@ if [ -e $HOME/.bashrc.jsk ]; then
     source $HOME/.bashrc.jsk
 fi
 
+# ros bashrc
+if [ -e $HOME/.bashrc.cturtle.ros ]; then
+    quiet_echo loading ros setup file ...
+    if [ -x `which rospack` ]; then
+        source $HOME/.bashrc.cturtle.ros
+    fi
+fi
+
 # os dependent files
 OS=`uname`
 if [ "$OS" = "CYGWIN_NT-5.1" -o "$OS" = "CYGWIN_NT-6.0" ] ; then
@@ -169,14 +177,6 @@ elif [ "$OS" = "Darwin" ] ; then
     if [ -e $HOME/.bashrc.darwin ]; then
         quiet_echo loading darwin setup file ...
         source $HOME/.bashrc.darwin
-    fi
-fi
-
-# ros bashrc
-if [ -e $HOME/.bashrc.cturtle.ros ]; then
-    quiet_echo loading ros setup file ...
-    if [ -x `which rospack` ]; then
-        source $HOME/.bashrc.cturtle.ros
     fi
 fi
 
