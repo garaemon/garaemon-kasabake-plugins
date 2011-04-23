@@ -88,3 +88,21 @@ export PATH=$PATH:$HOME/gprog/platex-create-pkg
 
 export LANG=ja_JP.UTF-8
 
+# os dependent files
+OS=`uname`
+if [ "$OS" = "CYGWIN_NT-5.1" -o "$OS" = "CYGWIN_NT-6.0" ] ; then
+    if [ -e $HOME/.shrc.cygwin ]; then
+        source $HOME/.shrc.cygwin
+    fi
+    if [ -e $HOME/.shrc.cygwin.jsk ]; then
+        source $HOME/.shrc.cygwin.jsk
+    fi
+elif [ "$OS" = "Linux" ] ; then
+    if [ -e $HOME/.shrc.linux ]; then
+        source $HOME/.shrc.linux
+    fi
+elif [ "$OS" = "Darwin" ] ; then
+    if [ -e $HOME/.shrc.darwin ]; then
+        source $HOME/.shrc.darwin
+    fi
+fi
